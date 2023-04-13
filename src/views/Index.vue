@@ -5,7 +5,9 @@
         <el-row :gutter="20">
           <el-col :span="4"><img src="../assets/logofinal.png" alt="logo" class="logo"></el-col>
           <el-col :span="16"><h2>云原生管理系统</h2></el-col>
-          <el-col :span="4"><span class="logout">退出登录</span></el-col>
+          <el-col :span="4" class="col-btn">
+            <el-button @click="logout">退出登录</el-button>
+          </el-col>
         </el-row>
       </el-header>
       <el-container>
@@ -39,7 +41,11 @@ export default {
   setup() {
     const router = useRouter()
     const list = router.getRoutes().filter(v => v.meta.isShow)
-    return {list};
+    const logout=()=>{
+      localStorage.removeItem('uid')
+      router.push('/')
+    }
+    return {list,logout};
   },
 }
 </script>
@@ -53,7 +59,10 @@ export default {
   .logo {
     height: 80px;
   }
-
+  .col-btn{
+  height: 80px;
+    line-height: 80px;
+  }
   h2, .logout {
     text-align: center;
     height: 80px;
@@ -70,4 +79,5 @@ export default {
 
   height: calc(100vh - 80px);
 }
+
 </style>

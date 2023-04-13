@@ -19,14 +19,12 @@ export interface PageVoInt{
     count:number
 }
 export interface SelectDataInt{
-    title:string,
-    status:string
+    title:string
 }
 export class InitData{
     list:BlogsInt[]=[]
     query:SelectDataInt={
-        title:"",
-        status:""
+        title:""
     }
     pageVo:PageVoInt={
         pageNumber:1,
